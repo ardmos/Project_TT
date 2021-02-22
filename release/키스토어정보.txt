@@ -1,0 +1,5 @@
+Alias : aotkey0
+
+Keystore pass : aotstore
+Key pass : aotkey
+
