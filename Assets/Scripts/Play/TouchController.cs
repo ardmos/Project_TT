@@ -10,7 +10,7 @@ public class TouchController : MonoBehaviour
     GameObject tomatoPos, tomatoPrefab, rope_Arm, stageDirector;
     GameObject cur_reloadedTomato;
     //차징 위한 모터 스피드. 맥스스피드
-    public int mSpeed, maxSpeed, speedUnit;
+    public float mSpeed, maxSpeed, speedUnit;
     HingeJoint2D hingeJoint2D;
     JointMotor2D jointMotor2D;
 
@@ -120,11 +120,13 @@ public class TouchController : MonoBehaviour
                         {
                             case true:
                                 if (mSpeed < maxSpeed)
-                                    mSpeed++;
+                                    //mSpeed++;
+                                    mSpeed += 0.1f;
                                 break;
                             case false:
                                 if (-maxSpeed < mSpeed)
-                                    mSpeed--;
+                                    //mSpeed--;
+                                    mSpeed -= 0.1f;
                                 break;
                         }
                         //print("Charge!");

@@ -10,7 +10,7 @@ public class Tomato : MonoBehaviour
     //토마토, 골 충돌체크, 발사여부. 
     [SerializeField]
     GameObject[] items;
-    public bool isGoaled, isOnTheAir, isKatchuped;
+    public bool isGoaled, isOnTheAir, isKatchuped, isOut;
 
 
     void Start()
@@ -20,8 +20,7 @@ public class Tomato : MonoBehaviour
             isGoaled = false;
             isOnTheAir = false;
             isKatchuped = false;
-        }
-        
+        }        
     }
 
     void Update()
@@ -48,7 +47,21 @@ public class Tomato : MonoBehaviour
                 #endregion
             }
         }
+
+        OutCheck();
     }
+
+    #region 화면 밖으로 나갔는지 체크
+    public void OutCheck()
+    {
+        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+
+        if (pos.x < 0f) isOut = true;
+        if (pos.x > 1f) isOut = true;
+        if (pos.y < 0f) isOut = true;
+        if (pos.y > 1f) isOut = true;
+    }
+    #endregion
 
     #region 보스와 충돌판정
     private void OnCollisionEnter2D(Collision2D collision)
@@ -94,15 +107,14 @@ public class Tomato : MonoBehaviour
     IEnumerator TomatoBoom()
     {
         yield return new WaitForSeconds(5);
-        if (!isGoaled)
+        if (!isGoaled && !isOut)
         {
             gameObject.GetComponent<AudioSource>().Play();
             isKatchuped = true;
-            print("boom!! : " + gameObject.name);
+            //print("boom!! : " + gameObject.name);
             gameObject.GetComponent<SpriteRenderer>().sprite = boomedTomato;
             gameObject.GetComponent<CircleCollider2D>().enabled = false;
         }
-
     }
     #endregion
 
