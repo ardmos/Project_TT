@@ -79,18 +79,19 @@ public class TouchController : MonoBehaviour
     #region 발사 후 쿨다운
     private void CoolingDown()
     {
-        if (mSpeed > 0)
+        if (mSpeed-1 > 0)
         {
             //좌회전 진정
             mSpeed--;
         }
-        else if (mSpeed < 0)
+        else if (mSpeed+1 < 0)
         {
             //우회전 진정
             mSpeed++;
         }
         else
         {
+            //mSpeed = 0;
             afterFire = false;
         }
     }
@@ -100,11 +101,12 @@ public class TouchController : MonoBehaviour
 
     private void ChargeAndShoot()
     {
+#if UNITY_ANDROID
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
 
-            #region 장전되어있는데 터치 이벤트
+#region 장전되어있는데 터치 이벤트
             if (isReloaded)
             {
                 switch (touch.phase)
@@ -147,9 +149,9 @@ public class TouchController : MonoBehaviour
                 }
 
             }
-            #endregion  장전되어있는데 터치 이벤트
+#endregion  장전되어있는데 터치 이벤트
 
-            #region 장전되어있지 않은 경우 터치 이벤트
+#region 장전되어있지 않은 경우 터치 이벤트
             else
             {
                 var ped = new PointerEventData(null);
@@ -157,32 +159,34 @@ public class TouchController : MonoBehaviour
                 List<RaycastResult> results = new List<RaycastResult>();  //여기에 히트된 개체 저장.
                 gr.Raycast(ped, results);
 
-                if(results.Count>0)
-                {
-                    GameObject obj = results[0].gameObject; //가장 위에 있는 UI부터 [0]~ 순으로 저장된다.
-                    if (obj.CompareTag("SwitchingSwingDirection"))
-                    {
+                //if(results.Count>0)
+                //{
+                //    GameObject obj = results[0].gameObject; //가장 위에 있는 UI부터 [0]~ 순으로 저장된다.
+                //    if (obj.CompareTag("SwitchingSwingDirection"))  //이제 토글버튼으로 처리함. ToggleTurnRorL()
+                //    {
                         //Debug.Log("SwitchingSwingDirection!!!! Yea!!!!!!!");
-                    }
-                    else
-                    {
+                //    }
+                //    else
+                //    {
                         //Debug.Log(obj.tag);
-                    }
-                }
-                else
-                {
+                //    }
+                //}
+                //else
+                //{
                     if ((touch.phase == TouchPhase.Began))
                     {
                         ReloadingTomato();
                     }
-                }
+                //}
             }                           
-            #endregion  장전되어있지 않은 경우 터치 이벤트
+#endregion  장전되어있지 않은 경우 터치 이벤트
         }
-    }
-    #endregion
+#endif
 
-    #region 재장전
+    }
+#endregion
+
+#region 재장전
     private void ReloadingTomato()
     {
         //남은 토마토가 없으면 장전 못해야함. 남은 토마토 체크 부분
@@ -198,15 +202,15 @@ public class TouchController : MonoBehaviour
             tomato.GetComponent<RelativeJoint2D>().connectedBody = GameObject.Find("Rope").GetComponent<Rigidbody2D>();
             cur_reloadedTomato = tomato;
             isReloaded = true;
-            print("Reload Success");
+            Debug.Log("Reload Success");
         }
     }
-    #endregion
+#endregion
 
-    #region 몽딩이 회전 방향 토글버튼 기능.
+#region 몽딩이 회전 방향 토글버튼 기능.
     public void ToggleTurnRorL()
     {
         right = !right;        
     }
-    #endregion
+#endregion
 }

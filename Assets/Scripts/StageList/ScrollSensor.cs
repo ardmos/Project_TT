@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ScrollSensor : MonoBehaviour
 {
-    Vector2 startPos, newPos, pos, deltapos;
+    Vector2 startPos, newPos, currentpos, deltapos;
 
     public string message { get; set; }
 
@@ -17,9 +17,6 @@ public class ScrollSensor : MonoBehaviour
     [SerializeField]
     ImageWipe imageWipeObj;
 
-    //For SecretPlace
-    int tab=0;
-    //
 
     void Update()
     {
@@ -30,72 +27,33 @@ public class ScrollSensor : MonoBehaviour
     private void ScrollTouchRec()
     {
         //print("Touch: " + message + ", moved distance: " + (newPos-startPos));
-        
-        //스테이지 하우스 터치된게 아닐경우, 스크롤로 처리. 
+
+        #if UNITY_ANDROID
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
 
-            //여기서 스테이지하우스 터치인지 처리하고, 아닐경우 아래 처리하도록. 
+            //스테이지 하우스 터치된게 아닐경우, 스크롤로 처리. 
             #region 스테이지 하우스들 터치 인식
-            pos = touch.position;
-            pos = Camera.main.ScreenToWorldPoint(pos);
 
-            RaycastHit2D hit = Physics2D.Raycast(pos, transform.forward, 15f);
-            Debug.DrawRay(pos, transform.forward * 10, Color.red, 0.3f);
 
-            if(hit == true)
-            {                
-                switch (hit.transform.tag)
-                {
-                    case "Stage0":
-                        //SceneManager.LoadScene("Stage0");
-                        imageWipeObj.StartImageWipe("Stage0", 0);
-                        break;
-                    case "Stage1":
-                        if (stageListSceneManager.GetComponent<StageListSceneManager>().houses[1].pline.enabled == false)
-                            //SceneManager.LoadScene("Stage1");
-                            imageWipeObj.StartImageWipe("Stage1", 1);
-                        else
-                            print("pline!!!");
-                        break;
-                    case "Stage2":
-                        if (stageListSceneManager.GetComponent<StageListSceneManager>().houses[2].pline.enabled == false)
-                            //SceneManager.LoadScene("Stage2");
-                            imageWipeObj.StartImageWipe("Stage2", 2);
-                        else
-                            print("pline!!!");
-                        break;
-                    case "Stage3":
-                        break; 
-                    case "Stage4":
-                        break;
-                    case "Stage5":
-                        break;
-                    case "SecretSanctuary":
-                        // 비밀 이벤트 지역! 우리의 비밀 공간
-                        tab++;
-                        print("Tabed!! : "+ tab);
-                        if (tab >= 3)
-                        {
-                            SceneManager.LoadScene("Door");
-                        }
-                        break;
+            currentpos = touch.position;
 
-                    default:
-                        break;
-                }
-            }
+
+
+            TouchStageButtonCheck(currentpos);
             #endregion
 
 
 
-
+            //스크롤로 처리
             #region 터치스크롤 부분
+
             deltapos = touch.deltaPosition;
-            pos = touch.position;
+            //currentpos = touch.position;
+
             wstartPos = Camera.main.ScreenToWorldPoint(new Vector3(deltapos.x, deltapos.y));
-            wnewPos = Camera.main.ScreenToWorldPoint(new Vector3(pos.x, pos.y));
+            wnewPos = Camera.main.ScreenToWorldPoint(new Vector3(currentpos.x, currentpos.y));
 
             switch (touch.phase)
             {
@@ -125,6 +83,64 @@ public class ScrollSensor : MonoBehaviour
                     break;
             }
             #endregion
+        }
+        #endif
+
+        #if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            currentpos = Input.mousePosition;
+
+            TouchStageButtonCheck(currentpos);
+        }
+
+        #endif
+
+ 
+    }
+
+    private void TouchStageButtonCheck(Vector2 pos)
+    {
+        pos = Camera.main.ScreenToWorldPoint(pos);
+
+        RaycastHit2D hit = Physics2D.Raycast(pos, transform.forward, 15f);
+        Debug.DrawRay(pos, transform.forward * 10, Color.red, 0.3f);
+
+        if (hit == true)
+        {
+            switch (hit.transform.tag)
+            {
+                case "Stage0":
+                    //SceneManager.LoadScene("Stage0");
+                    imageWipeObj.StartImageWipe("Stage0", 0);
+                    break;
+                case "Stage1":
+                    if (stageListSceneManager.GetComponent<StageListSceneManager>().houses[1].pline.enabled == false)
+                        //SceneManager.LoadScene("Stage1");
+                        imageWipeObj.StartImageWipe("Stage1", 1);
+                    else
+                        print("pline!!!");
+                    break;
+                case "Stage2":
+                    if (stageListSceneManager.GetComponent<StageListSceneManager>().houses[2].pline.enabled == false)
+                        //SceneManager.LoadScene("Stage2");
+                        imageWipeObj.StartImageWipe("Stage2", 2);
+                    else
+                        print("pline!!!");
+                    break;
+                case "Stage3":
+                    break;
+                case "Stage4":
+                    break;
+                case "Stage5":
+                    break;
+                case "SecretSanctuary":
+                    // 비밀 이벤트 지역!
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
     #endregion
