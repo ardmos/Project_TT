@@ -26,6 +26,7 @@ public class StageListSceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Scene Start Called");
         GameObject.Find("AutoLoader").GetComponent<AutoLoader>().AutoLoad_UserData();
         DefaultHouseSetter();
         SettingHouseStarsAndPline();
@@ -33,7 +34,7 @@ public class StageListSceneManager : MonoBehaviour
 
     private void SettingHouseStarsAndPline()
     {
-        //print("SettingHouseStarsAndPline()");
+        print("SettingHouseStarsAndPline()");
         if (GameObject.Find("User"))
         {
             GameObject userDataObj = GameObject.Find("User");
@@ -42,15 +43,17 @@ public class StageListSceneManager : MonoBehaviour
             {
                 int stageNum = userDataObj.GetComponent<User>().arrClearedStageStarScore[i].Stage();
 
-                //해당 스테이지 클리어시 다음 스테이지 폴리스라인 제거하고, 
-                if (stageNum!=2 && userDataObj.GetComponent<User>().arrClearedStageStarScore[i].StarScore() != 0)//최종 클리어한 스테이지가 마지막스테이지인지, 아니면 0점인지 확인하고, 최종클리어스테이지 다음 스테이지 폴리스라인 제거 들어감.
+                //스테이지 클리어시 
+                //최종 클리어한 스테이지가 1.마지막스테이지인지 2.0점인지 확인하고 3.최종클리어스테이지 다음 스테이지 폴리스라인 제거 들어감.
+                if (stageNum != 2 && userDataObj.GetComponent<User>().arrClearedStageStarScore[i].StarScore() != 0)
                 {
-                    houses[stageNum + 1].pline.enabled = false;
+                    houses[stageNum + 1].pline.enabled = false; //폴리스라인 제거
                 }
-                else
-                    // 최종스테이지이면 해제할 다음 스테이지의 폴리스라인이 없으므로  스킵. or 0점이어도 다음스테이지 폴리스라인 안풀어줌.
-                    
+                else // 최종스테이지이면 해제할 다음 스테이지의 폴리스라인이 없으므로  스킵. or 0점이어도 다음스테이지 폴리스라인 안풀어줌.
+                { }
 
+
+                    Debug.Log("stageNum:" + stageNum + "\nstar:" + userDataObj.GetComponent<User>().arrClearedStageStarScore[i].StarScore());
                 //받은 별점 갯수에 맞게 별들 달아준다.
                 switch (userDataObj.GetComponent<User>().arrClearedStageStarScore[i].StarScore())
                 {
@@ -60,6 +63,7 @@ public class StageListSceneManager : MonoBehaviour
                         houses[stageNum].stars[0].enabled = true;
                         break;
                     case 2:
+                            
                         for (int starNum = 0; starNum < 2; starNum++)
                         {
                             houses[stageNum].stars[starNum].enabled = true;
