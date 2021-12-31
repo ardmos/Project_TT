@@ -21,9 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Stage2.unity
     guid: 3d7a7923c95c58b419d57b87bb1bcc75
   - enabled: 1
-    path: Assets/Scenes/SecretPlace/Door.unity
-    guid: 9df3f1e27c90f8544b092d2e0333d4d0
+    path: Assets/Scenes/Stage3.unity
+    guid: 281b30354a5250a47ac8ed30821b039e
   - enabled: 1
-    path: Assets/Scenes/SecretPlace/Sanctuary.unity
-    guid: 2db0da3940c89694e8c0812f344b26c8
+    path: Assets/Scenes/Stage4.unity
+    guid: d32a1d4cc65b753479f4720c67d13686
   m_configObjects: {}

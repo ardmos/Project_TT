@@ -45,7 +45,7 @@ public class StageListSceneManager : MonoBehaviour
 
                 //스테이지 클리어시 
                 //최종 클리어한 스테이지가 1.마지막스테이지인지 2.0점인지 확인하고 3.최종클리어스테이지 다음 스테이지 폴리스라인 제거 들어감.
-                if (stageNum != 2 && userDataObj.GetComponent<User>().arrClearedStageStarScore[i].StarScore() != 0)
+                if (stageNum+1<houses.Length && userDataObj.GetComponent<User>().arrClearedStageStarScore[i].StarScore() != 0)
                 {
                     houses[stageNum + 1].pline.enabled = false; //폴리스라인 제거
                 }

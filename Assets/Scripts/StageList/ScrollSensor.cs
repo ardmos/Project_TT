@@ -115,22 +115,16 @@ public class ScrollSensor : MonoBehaviour
                     imageWipeObj.StartImageWipe("Stage0", 0);
                     break;
                 case "Stage1":
-                    if (stageListSceneManager.GetComponent<StageListSceneManager>().houses[1].pline.enabled == false)
-                        //SceneManager.LoadScene("Stage1");
-                        imageWipeObj.StartImageWipe("Stage1", 1);
-                    else
-                        print("pline!!!");
+                    MoveToGameStageScene(1, "Stage1", 1);
                     break;
                 case "Stage2":
-                    if (stageListSceneManager.GetComponent<StageListSceneManager>().houses[2].pline.enabled == false)
-                        //SceneManager.LoadScene("Stage2");
-                        imageWipeObj.StartImageWipe("Stage2", 2);
-                    else
-                        print("pline!!!");
+                    MoveToGameStageScene(2, "Stage2", 2);
                     break;
                 case "Stage3":
+                    MoveToGameStageScene(3, "Stage3", 0);
                     break;
                 case "Stage4":
+                    MoveToGameStageScene(4, "Stage4", 1);
                     break;
                 case "Stage5":
                     break;
@@ -142,6 +136,15 @@ public class ScrollSensor : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private void MoveToGameStageScene(int selected_house_num, string stage_name, int wipe_anim_num)
+    {
+        if (stageListSceneManager.GetComponent<StageListSceneManager>().houses[selected_house_num].pline.enabled == false)
+            //SceneManager.LoadScene("Stage2");
+            imageWipeObj.StartImageWipe(stage_name, wipe_anim_num);
+        else
+            print("pline!!!");
     }
     #endregion
 }
