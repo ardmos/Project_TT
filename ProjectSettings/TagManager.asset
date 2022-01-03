@@ -73,6 +73,9 @@ TagManager:
   - name: Character
     uniqueID: 3588660741
     locked: 0
+  - name: Disturbance
+    uniqueID: 385352379
+    locked: 0
   - name: Popup
     uniqueID: 843037777
     locked: 0
