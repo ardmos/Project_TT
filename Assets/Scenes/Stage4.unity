@@ -1130,6 +1130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50c6942fde5fb45a488e18c6922c7d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  current_fruit_Pref: {fileID: 0}
   sfxOn: 0
   sfxOff: 0
   musicOn: 0
