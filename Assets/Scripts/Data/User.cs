@@ -5,6 +5,19 @@ using System;
 
 public class User : DontDestroy<User>
 {
+    #region Current Fruit
+    public enum Fruits
+    {
+        tomato,
+        banana,
+        pineapple,
+        watermelon
+    }
+    //얘네 필요?????  지금 과일 바꾸기 하는중. 
+
+    public GameObject current_fruit_Pref;
+    #endregion
+
     #region option settings
     [SerializeField]
     private bool sfxOn, sfxOff, musicOn, musicOff;

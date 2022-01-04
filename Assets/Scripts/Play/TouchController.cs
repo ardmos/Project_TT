@@ -36,6 +36,9 @@ public class TouchController : MonoBehaviour
 
     private void Inits()
     {
+        InitGameObjects();
+
+
         isReloaded = false;
         right = true;  //기본은 우회전.
         afterFire = false;
@@ -51,6 +54,33 @@ public class TouchController : MonoBehaviour
             userObj = GameObject.Find("User");
             userData = userObj.GetComponent<User>();
         }
+    }
+
+    private void InitGameObjects()
+    {
+        if (rope_Arm == null) {
+            try
+            {
+                rope_Arm = GameObject.Find("Rope");
+            }
+            catch (System.Exception)
+            {
+                throw new System.Exception("오브젝트명을 확인해주세요!");
+            }
+        }
+        if (tomatoPos == null)
+        {
+            try
+            {
+                tomatoPos = GameObject.Find("TomatoPos");
+            }
+            catch (System.Exception)
+            {
+
+                throw new System.Exception("오브젝트명을 확인해주세요!");
+            }
+        }
+
     }
 
     #endregion

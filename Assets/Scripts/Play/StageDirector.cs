@@ -44,6 +44,7 @@ public class StageDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        initGameObjects();
         min.text = "00";
         sec.text = "00";
         time = 0;
@@ -51,6 +52,43 @@ public class StageDirector : MonoBehaviour
         succeededtom = 0;
         //tomCount.text = "0";  유저데이터에서 읽어와야함
         isalreadyPopUped = false;
+    }
+
+    private void initGameObjects()
+    {
+        if (min == null) {
+            try
+            {
+                min = GameObject.Find("min").GetComponent<Text>();
+            }
+            catch (System.Exception)
+            {
+                //Debug.Log("뭔가문제임!!!");
+                throw new System.Exception("뭔가!!! 뭔가 문제임!!!");
+                //throw;
+            }
+        }
+        if (sec == null) {
+            try
+            {
+                sec = GameObject.Find("sec").GetComponent<Text>();
+            }
+            catch (System.Exception)
+            {
+                throw new System.Exception("뭔가!!! 뭔가 문제임!!!");
+            }
+        }
+        if (tomCount == null) {
+            try
+            {
+                tomCount = GameObject.Find("TomatoCount").GetComponent<Text>();
+            }
+            catch (System.Exception)
+            {
+
+                throw new System.Exception("뭔가!!! 뭔가 문제임!!!");
+            }
+        } 
     }
 
     // Update is called once per frame
