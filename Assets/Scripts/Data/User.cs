@@ -5,7 +5,7 @@ using System;
 
 public class User : DontDestroy<User>
 {
-    #region Current Fruit
+    #region Change Fruit
     public enum Fruits
     {
         tomato,

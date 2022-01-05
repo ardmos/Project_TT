@@ -2066,6 +2066,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 818248083}
     m_Modifications:
+    - target: {fileID: 8304493702730659264, guid: b46dd09cfe3b843498c6a6d4fc734b58,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 365277896}
+    - target: {fileID: 8304493702730659264, guid: b46dd09cfe3b843498c6a6d4fc734b58,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleTurnRorL
+      objectReference: {fileID: 0}
     - target: {fileID: 8304493702730659265, guid: b46dd09cfe3b843498c6a6d4fc734b58,
         type: 3}
       propertyPath: m_Pivot.x

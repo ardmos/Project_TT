@@ -14,9 +14,8 @@ public class TouchController : MonoBehaviour
     HingeJoint2D hingeJoint2D;
     JointMotor2D jointMotor2D;
 
-    //회전방향, 장전여부, 차징중인지
-    [SerializeField]
-    bool right, isReloaded, afterFire;
+    //회전방향, 장전여부, 차징중인지  토글버튼이 눌릴때마다 DirToggleController.cs에서 right의 값을 바꿔줌.    
+    public bool right, isReloaded, afterFire;  
 
     //스윙스위칭 버튼 식별 위한 부분. 
     [SerializeField]
@@ -237,10 +236,5 @@ public class TouchController : MonoBehaviour
     }
 #endregion
 
-#region 몽딩이 회전 방향 토글버튼 기능.
-    public void ToggleTurnRorL()
-    {
-        right = !right;        
-    }
-#endregion
+
 }
