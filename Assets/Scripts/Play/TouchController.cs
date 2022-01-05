@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TouchController : MonoBehaviour
 {
     [SerializeField]
-    GameObject tomatoPos, tomatoPrefab, rope_Arm, stageDirector;
+    GameObject tomatoPos, currentFruitPref, rope_Arm, stageDirector;
     GameObject cur_reloadedTomato;
     //차징 위한 모터 스피드. 맥스스피드
     public float mSpeed, maxSpeed, speedUnit;
@@ -53,6 +53,8 @@ public class TouchController : MonoBehaviour
             userObj = GameObject.Find("User");
             userData = userObj.GetComponent<User>();
         }
+
+        UpdateNewCurrentFruitPrefab();
     }
 
     private void InitGameObjects()
@@ -81,8 +83,12 @@ public class TouchController : MonoBehaviour
         }
 
     }
-
     #endregion
+
+    public void UpdateNewCurrentFruitPrefab()
+    {
+        currentFruitPref = userData.GetCurrentFruit();
+    }
 
 
     // Update is called once per frame
@@ -225,7 +231,9 @@ public class TouchController : MonoBehaviour
         }
         else
         {
-            GameObject tomato = Instantiate(tomatoPrefab) as GameObject;
+            UpdateNewCurrentFruitPrefab();  //현재 던질 과일을 한 번 새롭게 갱신하고
+
+            GameObject tomato = Instantiate(currentFruitPref) as GameObject;
             tomato.transform.position = tomatoPos.transform.position;
             //tomato.transform.SetParent(GameObject.Find("Catapult").transform);
             tomato.GetComponent<RelativeJoint2D>().connectedBody = GameObject.Find("Rope").GetComponent<Rigidbody2D>();

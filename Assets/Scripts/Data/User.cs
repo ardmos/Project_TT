@@ -10,12 +10,61 @@ public class User : DontDestroy<User>
     {
         tomato,
         banana,
-        pineapple,
-        watermelon
+        //pineapple,
+        //watermelon
     }
-    //얘네 필요?????  지금 과일 바꾸기 하는중. 
+    [SerializeField]
+    private Fruits current_fruits_enum;
+    [SerializeField]
+    private GameObject current_fruit_Pref;
+    [SerializeField]
+    private GameObject[] fruit_prefabs;
+    [SerializeField]
+    private Sprite[] fruits_images;
 
-    public GameObject current_fruit_Pref;
+    private void InitFruitPrefabArr()
+    {
+        try
+        {
+            fruit_prefabs = new GameObject[]{
+            Resources.Load("Prefabs/Fruits/fruit_tomato", typeof(GameObject)) as GameObject,
+            Resources.Load<GameObject>("Prefabs/Fruits/fruit_banana")
+            };
+            current_fruits_enum = Fruits.tomato;
+            current_fruit_Pref = fruit_prefabs[(int)current_fruits_enum];
+        }
+        catch (Exception)
+        {
+            throw new Exception("크리에이터! 과일 프리팹의 경로명을 확인해주세요");
+        }
+    }
+    private void InitFruitImages() {
+        try
+        {
+            fruits_images = new Sprite[] {
+                Resources.Load<Sprite>("Images/Fruits/apple"),
+                Resources.Load<Sprite>("Images/Fruits/banana")
+            };
+        }
+        catch (Exception)
+        {
+            throw new Exception("크리에이터! 과일 이미지의 경로명을 확인해주세요"); throw;
+        }
+    
+    }
+
+    public void SetCurrentFruitToNextFruit() {
+        current_fruits_enum++;
+        Debug.Log(current_fruits_enum);
+        current_fruit_Pref = fruit_prefabs[(int)current_fruits_enum];
+    }
+    public GameObject GetCurrentFruit() {
+        return current_fruit_Pref;
+    }
+
+    public Sprite GetCurrentFruitImages() {
+        return fruits_images[(int)current_fruits_enum];
+    }
     #endregion
 
     #region option settings
@@ -171,5 +220,9 @@ public class User : DontDestroy<User>
     }
     #endregion
 
-
+    private void Start()
+    {
+        InitFruitPrefabArr();
+        InitFruitImages();
+    }
 }

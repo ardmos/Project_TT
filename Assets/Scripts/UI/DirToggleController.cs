@@ -26,6 +26,7 @@ public class DirToggleController : MonoBehaviour
         gameObject.GetComponent<Toggle>().onValueChanged.AddListener(delegate{
             ToggleTurnRorL();
         });
+        
     }
 
     #region 몽딩이 회전 방향 토글버튼 기능.
