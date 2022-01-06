@@ -30,6 +30,9 @@ public class StageListSceneManager : MonoBehaviour
         GameObject.Find("AutoLoader").GetComponent<AutoLoader>().AutoLoad_UserData();
         DefaultHouseSetter();
         SettingHouseStarsAndPline();
+
+        //현재과일 토마토로 초기화.
+        GameObject.FindObjectOfType<User>().SetCurrentFruit_Tomato();
     }
 
     private void SettingHouseStarsAndPline()

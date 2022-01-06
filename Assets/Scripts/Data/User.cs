@@ -51,6 +51,13 @@ public class User : DontDestroy<User>
             throw new Exception("크리에이터! 과일 이미지의 경로명을 확인해주세요"); throw;
         }
     
+    }    
+
+    //StageList Scene에서 호출하는 메서드. 현재과일을 토마토로 초기화한다. 
+    public void SetCurrentFruit_Tomato()
+    {
+        current_fruits_enum = Fruits.tomato;
+        current_fruit_Pref = fruit_prefabs[(int)current_fruits_enum];
     }
 
     public void SetCurrentFruitToNextFruit() {
@@ -59,9 +66,9 @@ public class User : DontDestroy<User>
             current_fruits_enum = Fruits.tomato;
         }
         else {
-            Debug.Log(current_fruits_enum);
+            //Debug.Log(current_fruits_enum);
             current_fruits_enum++;
-            Debug.Log("after current_fruits_enum++ " + current_fruits_enum);
+            //Debug.Log("after current_fruits_enum++ " + current_fruits_enum);
             
         }
         current_fruit_Pref = fruit_prefabs[(int)current_fruits_enum];
@@ -233,4 +240,6 @@ public class User : DontDestroy<User>
         InitFruitPrefabArr();
         InitFruitImages();
     }
+
+    
 }
