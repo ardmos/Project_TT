@@ -54,8 +54,16 @@ public class User : DontDestroy<User>
     }
 
     public void SetCurrentFruitToNextFruit() {
-        current_fruits_enum++;
-        Debug.Log(current_fruits_enum);
+        if (fruit_prefabs.Length == (int)current_fruits_enum + 1)
+        {
+            current_fruits_enum = Fruits.tomato;
+        }
+        else {
+            Debug.Log(current_fruits_enum);
+            current_fruits_enum++;
+            Debug.Log("after current_fruits_enum++ " + current_fruits_enum);
+            
+        }
         current_fruit_Pref = fruit_prefabs[(int)current_fruits_enum];
     }
     public GameObject GetCurrentFruit() {

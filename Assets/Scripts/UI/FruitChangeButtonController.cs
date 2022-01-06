@@ -28,11 +28,14 @@ public class FruitChangeButtonController : MonoBehaviour
     }
 
     private void OnFruitChangeButtonClicked()
-    {
-        // 1. Enum + 1한 과일 이미지로 해당 현재 선택 과일 이미지로 버튼 이미지를 변경
-        gameObject.GetComponent<Image>().sprite = user_data.GetCurrentFruitImages();
-        // 2. Enum + 1한 과일 Prefab으로 해당 현재 선택 과일 Prefab 변경
+    { 
+
+        // 1. Enum + 1한 과일 Prefab으로 해당 현재 선택 과일 Prefab 변경
         user_data.SetCurrentFruitToNextFruit();
+
+        // 2. Enum + 1한 과일 이미지로 해당 현재 선택 과일 이미지로 버튼 이미지를 변경
+        gameObject.GetComponent<Image>().sprite = user_data.GetCurrentFruitImages();
+       
 
     }
 }
