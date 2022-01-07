@@ -4600,16 +4600,6 @@ MonoBehaviour:
     - {fileID: 1597693224}
     - {fileID: 1861992717}
     pline: {fileID: 115525834}
-  - stars: []
-    pline: {fileID: 0}
-  - stars: []
-    pline: {fileID: 0}
-  - stars: []
-    pline: {fileID: 0}
-  - stars: []
-    pline: {fileID: 0}
-  - stars: []
-    pline: {fileID: 0}
 --- !u!4 &817747594
 Transform:
   m_ObjectHideFlags: 0

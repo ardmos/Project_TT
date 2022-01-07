@@ -17,7 +17,7 @@ public class StageListSceneManager : MonoBehaviour
         }
     }
     [SerializeField]
-    public House[] houses = new House[10];
+    public House[] houses;
 
     /// <summary>
     /// 스테이지 증가시 현 스크립트에 House 배열 크기 조절해야함.
@@ -32,7 +32,17 @@ public class StageListSceneManager : MonoBehaviour
         SettingHouseStarsAndPline();
 
         //현재과일 토마토로 초기화.
-        GameObject.FindObjectOfType<User>().SetCurrentFruit_Tomato();
+        User user_data = GameObject.FindObjectOfType<User>();
+        user_data.SetCurrentFruit_Tomato();
+        //카메라 위치 로드.
+        Vector3 camera_pos_loaded = user_data.LoadCameraPosition();
+        if (camera_pos_loaded == Vector3.zero)
+        {
+            camera_pos_loaded = new Vector3(0f, 0f, -10f);
+        }
+        Camera.main.transform.position = camera_pos_loaded;
+
+
     }
 
     private void SettingHouseStarsAndPline()
@@ -47,9 +57,10 @@ public class StageListSceneManager : MonoBehaviour
                 int stageNum = userDataObj.GetComponent<User>().arrClearedStageStarScore[i].Stage();
 
                 //스테이지 클리어시 
-                //최종 클리어한 스테이지가 1.마지막스테이지인지 2.0점인지 확인하고 3.최종클리어스테이지 다음 스테이지 폴리스라인 제거 들어감.
-                if (stageNum+1<houses.Length && userDataObj.GetComponent<User>().arrClearedStageStarScore[i].StarScore() != 0)
+                //최종 클리어한 스테이지가 1.마지막스테이지인지 2. 별이 0개는 아닌지 확인하고 3.최종클리어스테이지 다음 스테이지 폴리스라인 제거 들어감.
+                if (stageNum+1 < houses.Length && userDataObj.GetComponent<User>().arrClearedStageStarScore[i].StarScore() != 0)
                 {
+                    Debug.Log(stageNum + "_stageNum, houses.Length" + houses.Length );
                     houses[stageNum + 1].pline.enabled = false; //폴리스라인 제거
                 }
                 else // 최종스테이지이면 해제할 다음 스테이지의 폴리스라인이 없으므로  스킵. or 0점이어도 다음스테이지 폴리스라인 안풀어줌.

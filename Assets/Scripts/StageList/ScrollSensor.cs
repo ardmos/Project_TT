@@ -140,7 +140,7 @@ public class ScrollSensor : MonoBehaviour
 
     private void MoveToGameStageScene(int selected_house_num, string stage_name, int wipe_anim_num)
     {
-        //씬 넘어가기 전에 카메라 pos 저장  <--- 저장까지 했음.  불러오기 할 차례!
+        //씬 넘어가기 전에 카메라 pos 저장
         GameObject.FindObjectOfType<User>().SaveCameraPosition(Camera.main.transform.position);
 
         if (stageListSceneManager.GetComponent<StageListSceneManager>().houses[selected_house_num].pline.enabled == false)

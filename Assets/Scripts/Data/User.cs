@@ -213,6 +213,7 @@ public class User : DontDestroy<User>
 
     #region Save&Load _ StageList Camera Pos
     //StageList Scene ScrollSensor와 교류.
+    [SerializeField]
     private Vector3 camera_position;
     public void SaveCameraPosition(Vector3 pos) {
         camera_position = pos;
