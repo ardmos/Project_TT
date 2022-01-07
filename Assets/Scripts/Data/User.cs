@@ -211,6 +211,17 @@ public class User : DontDestroy<User>
     }
     #endregion
 
+    #region Save&Load _ StageList Camera Pos
+    //StageList Scene ScrollSensor와 교류.
+    private Vector3 camera_position;
+    public void SaveCameraPosition(Vector3 pos) {
+        camera_position = pos;
+    }
+    public Vector3 LoadCameraPosition() {
+        return camera_position;
+    }
+    #endregion
+
 
     #region ===== Save&Load =====
     public void SaveUser()
