@@ -58,16 +58,18 @@ public class StageListSceneManager : MonoBehaviour
 
                 //스테이지 클리어시 
                 //최종 클리어한 스테이지가 1.마지막스테이지인지 2. 별이 0개는 아닌지 확인하고 3.최종클리어스테이지 다음 스테이지 폴리스라인 제거 들어감.
-                if (stageNum+1 < houses.Length && userDataObj.GetComponent<User>().arrClearedStageStarScore[i].StarScore() != 0)
+                if (stageNum + 1 < houses.Length && userDataObj.GetComponent<User>().arrClearedStageStarScore[i].StarScore() != 0)
                 {
-                    Debug.Log(stageNum + "_stageNum, houses.Length" + houses.Length );
+                    Debug.Log("스테이지" + stageNum + 
+                        " 에서 별을" + userDataObj.GetComponent<User>().arrClearedStageStarScore[i].StarScore() + "개 획득한것이 확인되어 해당 스테이지의 폴리스라인을 비활성화 합니다.  (전체 스테이지 개수" + houses.Length + ")");
                     houses[stageNum + 1].pline.enabled = false; //폴리스라인 제거
                 }
                 else // 최종스테이지이면 해제할 다음 스테이지의 폴리스라인이 없으므로  스킵. or 0점이어도 다음스테이지 폴리스라인 안풀어줌.
                 { }
 
 
-                    Debug.Log("stageNum:" + stageNum + "\nstar:" + userDataObj.GetComponent<User>().arrClearedStageStarScore[i].StarScore());
+                //Debug.Log("stageNum:" + stageNum + "\nstar:" + userDataObj.GetComponent<User>().arrClearedStageStarScore[i].StarScore());
+
                 //받은 별점 갯수에 맞게 별들 달아준다.
                 switch (userDataObj.GetComponent<User>().arrClearedStageStarScore[i].StarScore())
                 {

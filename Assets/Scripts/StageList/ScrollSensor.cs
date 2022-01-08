@@ -33,20 +33,10 @@ public class ScrollSensor : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
 
-            //스테이지 하우스 터치된게 아닐경우, 스크롤로 처리. 
-            #region 스테이지 하우스들 터치 인식
-
-
             currentpos = touch.position;
 
+            //TouchPhase.Began 타이밍에 스테이지 하우스 터치된게 아닐경우, 스크롤로 처리. 
 
-
-            TouchStageButtonCheck(currentpos);
-            #endregion
-
-
-
-            //스크롤로 처리
             #region 터치스크롤 부분
 
             deltapos = touch.deltaPosition;
@@ -60,6 +50,11 @@ public class ScrollSensor : MonoBehaviour
                 case TouchPhase.Began:
                     startPos = wnewPos - wstartPos;
                     message = "Began ";
+
+                    #region 스테이지 하우스들 터치된경우 인식
+                    TouchStageButtonCheck(currentpos);
+                    #endregion
+
                     break;
                 case TouchPhase.Moved:
                     newPos = wnewPos - wstartPos;
@@ -108,6 +103,17 @@ public class ScrollSensor : MonoBehaviour
 
         if (hit == true)
         {
+            string hit_obj_tag = hit.transform.tag;
+
+            //스테이지 하우스를 터치했을 경우. True 반환하면서 스테이지 이동
+            if (hit_obj_tag.Contains("Stage"))
+            {
+                Debug.Log("char hit_obj_tag[hit_obj_tag.Length - 1] : " + hit_obj_tag[hit_obj_tag.Length - 1]);
+                MoveToGameStageScene(hit_obj_tag[hit_obj_tag.Length - 1]-'0', hit_obj_tag, Random.Range(0, 3));
+                //return true;
+            }
+
+            /*
             switch (hit.transform.tag)
             {
                 case "Stage0":
@@ -135,19 +141,29 @@ public class ScrollSensor : MonoBehaviour
                 default:
                     break;
             }
+            */
         }
+        //return false;
     }
 
     private void MoveToGameStageScene(int selected_house_num, string stage_name, int wipe_anim_num)
     {
-        //씬 넘어가기 전에 카메라 pos 저장
-        GameObject.FindObjectOfType<User>().SaveCameraPosition(Camera.main.transform.position);
+        try
+        {
+            //씬 넘어가기 전에 카메라 pos 저장
+            GameObject.FindObjectOfType<User>().SaveCameraPosition(Camera.main.transform.position);
 
-        if (stageListSceneManager.GetComponent<StageListSceneManager>().houses[selected_house_num].pline.enabled == false)
-            //SceneManager.LoadScene("Stage2");
-            imageWipeObj.StartImageWipe(stage_name, wipe_anim_num);
-        else
-            print("pline!!!");
+            if (stageListSceneManager.GetComponent<StageListSceneManager>().houses[selected_house_num].pline.enabled == false)
+                //SceneManager.LoadScene("Stage2");
+                imageWipeObj.StartImageWipe(stage_name, wipe_anim_num);
+            else
+                print("pline!!!");
+        }
+        catch (System.Exception)
+        {
+            throw new System.Exception("selected_house_num: " + selected_house_num + ", stage_name: " + stage_name + ", wipe_anim_num: " + wipe_anim_num);
+        }
+
     }
     #endregion
 }
