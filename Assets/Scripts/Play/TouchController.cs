@@ -15,7 +15,7 @@ public class TouchController : MonoBehaviour
     JointMotor2D jointMotor2D;
 
     //회전방향, 장전여부, 차징중인지  토글버튼이 눌릴때마다 DirToggleController.cs에서 right의 값을 바꿔줌.    
-    public bool right, isReloaded, afterFire;  
+    public bool right, isReloaded, afterFire;
 
     //스윙스위칭 버튼 식별 위한 부분. 
     [SerializeField]
@@ -28,7 +28,7 @@ public class TouchController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Inits();        
+        Inits();
     }
 
     #region 초기화
@@ -59,7 +59,8 @@ public class TouchController : MonoBehaviour
 
     private void InitGameObjects()
     {
-        if (rope_Arm == null) {
+        if (rope_Arm == null)
+        {
             try
             {
                 rope_Arm = GameObject.Find("Rope");
@@ -110,16 +111,16 @@ public class TouchController : MonoBehaviour
         }
     }
 
-    
+
     #region 발사 후 쿨다운
     private void CoolingDown()
     {
-        if (mSpeed-1 > 0)
+        if (mSpeed - 1 > 0)
         {
             //좌회전 진정
             mSpeed--;
         }
-        else if (mSpeed+1 < 0)
+        else if (mSpeed + 1 < 0)
         {
             //우회전 진정
             mSpeed++;
@@ -141,7 +142,15 @@ public class TouchController : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
 
-#region 장전되어있는데 터치 이벤트
+            #region 터치된것이 UI인 경우 발사나 장전 하지 않게 해주는 부분
+            //터치된것이 UI이면 True 리턴.
+            if (Check_if_it_is_UI(touch))
+            {
+                return;
+            }           
+            #endregion
+
+            #region 장전되어있는데 터치 이벤트 _ 차징 후 발사 실행
             if (isReloaded)
             {
                 switch (touch.phase)
@@ -184,44 +193,23 @@ public class TouchController : MonoBehaviour
                 }
 
             }
-#endregion  장전되어있는데 터치 이벤트
-
-#region 장전되어있지 않은 경우 터치 이벤트
+            #endregion  장전되어있는데 터치 이벤트 _ 차징 후 발사 실행
+            #region 장전되어있지 않은 경우 터치 이벤트 _ ReloadingTomato() 실행
             else
             {
-                var ped = new PointerEventData(null);
-                ped.position = Input.mousePosition;
-                List<RaycastResult> results = new List<RaycastResult>();  //여기에 히트된 개체 저장.
-                gr.Raycast(ped, results);
-
-                //if(results.Count>0)
-                //{
-                //    GameObject obj = results[0].gameObject; //가장 위에 있는 UI부터 [0]~ 순으로 저장된다.
-                //    if (obj.CompareTag("SwitchingSwingDirection"))  //이제 토글버튼으로 처리함. ToggleTurnRorL()
-                //    {
-                        //Debug.Log("SwitchingSwingDirection!!!! Yea!!!!!!!");
-                //    }
-                //    else
-                //    {
-                        //Debug.Log(obj.tag);
-                //    }
-                //}
-                //else
-                //{
-                    if ((touch.phase == TouchPhase.Began))
-                    {
-                        ReloadingTomato();
-                    }
-                //}
-            }                           
-#endregion  장전되어있지 않은 경우 터치 이벤트
+                if ((touch.phase == TouchPhase.Began))
+                {
+                    ReloadingTomato();
+                }
+            }
+            #endregion  장전되어있지 않은 경우 터치 이벤트 _ ReloadingTomato() 실행
         }
 #endif
 
     }
-#endregion
+    #endregion 차징, 발사 부분
 
-#region 재장전
+    #region 재장전
     private void ReloadingTomato()
     {
         //남은 토마토가 없으면 장전 못해야함. 남은 토마토 체크 부분
@@ -242,7 +230,31 @@ public class TouchController : MonoBehaviour
             Debug.Log("Reload Success");
         }
     }
-#endregion
+    #endregion
 
 
+    //터치된것이 UI이면 True 리턴.
+    private bool Check_if_it_is_UI(Touch touch)
+    {
+        var pointer_event_data = new PointerEventData(null);
+        pointer_event_data.position = touch.position;
+        List<RaycastResult> raycast_results_list = new List<RaycastResult>();  //여기에 히트된 개체 저장.
+        gr.Raycast(pointer_event_data, raycast_results_list);   //레이를 발사한 후 히트된 개체들 저장 실행.
+
+        if (raycast_results_list.Count > 0)
+        {
+            GameObject casted_obj = raycast_results_list[0].gameObject; //가장 위에 있는 오브젝트부터 [0]~ 순으로 저장된다.
+            Debug.Log(casted_obj.tag);
+            if (casted_obj.CompareTag("UI"))  //가장 위에 있는 오브젝트의 태그가 UI일 경우
+            {
+                return true;
+            }
+            else //UI가 아닐 경우
+            {
+                return false;
+            }
+        }
+
+        return false;
+    }
 }

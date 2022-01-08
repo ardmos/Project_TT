@@ -290,9 +290,9 @@ GameObject:
   - component: {fileID: 203661670}
   - component: {fileID: 203661672}
   - component: {fileID: 203661671}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 342354699}
   m_Layer: 5
   m_Name: ===== RESULTPOPUP POS =====
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 399365990}
   m_Layer: 5
   m_Name: ===== TRANSITIONS =====
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -651,9 +651,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 510724820}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ===== UI =====
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -761,9 +761,9 @@ GameObject:
   - component: {fileID: 748473498}
   - component: {fileID: 748473497}
   - component: {fileID: 748473496}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ImageWipe_End
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -885,7 +885,7 @@ GameObject:
   - component: {fileID: 818248080}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1070,6 +1070,7 @@ MonoBehaviour:
   tomatoes: 10
   katchups: 0
   arrClearedStageStarScore: []
+  camera_position: {x: 0, y: 0, z: 0}
 --- !u!4 &925374479
 Transform:
   m_ObjectHideFlags: 0

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6874047111711125011}
   - component: {fileID: 6874047111711125013}
   - component: {fileID: 6874047111711125012}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: sec
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,9 +88,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6874047112102723671}
   - component: {fileID: 6874047112102723673}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TomatoImage
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,9 +136,9 @@ GameObject:
   - component: {fileID: 6874047112193263663}
   - component: {fileID: 6874047112193263665}
   - component: {fileID: 6874047112193263664}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ':'
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -214,9 +214,9 @@ GameObject:
   - component: {fileID: 6874047112423730245}
   - component: {fileID: 6874047112423730247}
   - component: {fileID: 6874047112423730246}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TomatoCount
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -293,9 +293,9 @@ GameObject:
   - component: {fileID: 6874047112592515029}
   - component: {fileID: 6874047112592515028}
   - component: {fileID: 6874047112592515027}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PlusButton(FullAds)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -411,9 +411,9 @@ GameObject:
   - component: {fileID: 6874047112663935098}
   - component: {fileID: 6874047112663935100}
   - component: {fileID: 6874047112663935099}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Contour
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -495,9 +495,9 @@ GameObject:
   - component: {fileID: 6874047112861934111}
   - component: {fileID: 6874047112861934110}
   - component: {fileID: 6874047112861934113}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BackButton
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -636,9 +636,9 @@ GameObject:
   - component: {fileID: 6874047113375716557}
   - component: {fileID: 6874047113375716559}
   - component: {fileID: 6874047113375716558}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Contour
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -716,9 +716,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6874047113516744881}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TImeCount
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -754,9 +754,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6874047113625974140}
-  m_Layer: 0
-  m_Name: ----------Upper UI Things----------
-  m_TagString: Untagged
+  m_Layer: 5
+  m_Name: ===== Upper UI Things =====
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -768,7 +768,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6874047113625974139}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -796,9 +796,9 @@ GameObject:
   - component: {fileID: 6874047113632463063}
   - component: {fileID: 6874047113632463065}
   - component: {fileID: 6874047113632463064}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: min
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -874,9 +874,9 @@ GameObject:
   - component: {fileID: 6874047113640868814}
   - component: {fileID: 6874047113640868816}
   - component: {fileID: 6874047113640868815}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

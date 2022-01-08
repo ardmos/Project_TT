@@ -21,6 +21,7 @@ TagManager:
   - RightWall
   - Bottom
   - Stage4
+  - UI
   layers:
   - Default
   - TransparentFX

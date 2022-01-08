@@ -237,8 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tomatoPos: {fileID: 1727350913}
-  tomatoPrefab: {fileID: 7725088340927763784, guid: 610e2ee6a52e3444495dc5ff10ffdbe0,
-    type: 3}
+  currentFruitPref: {fileID: 0}
   rope_Arm: {fileID: 1686709080}
   stageDirector: {fileID: 342417804}
   mSpeed: 0
@@ -506,9 +505,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 510724820}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ===== UI =====
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -624,7 +623,7 @@ GameObject:
   - component: {fileID: 818248080}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -723,7 +722,7 @@ GameObject:
   - component: {fileID: 913078501}
   m_Layer: 5
   m_Name: ===== RESULTPOPUP POS =====
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -776,6 +775,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50c6942fde5fb45a488e18c6922c7d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  current_fruits_enum: 0
+  current_fruit_Pref: {fileID: 0}
+  fruit_prefabs: []
+  fruits_images: []
   sfxOn: 0
   sfxOff: 0
   musicOn: 0
@@ -783,6 +786,7 @@ MonoBehaviour:
   tomatoes: 10
   katchups: 0
   arrClearedStageStarScore: []
+  camera_position: {x: 0, y: 0, z: 0}
 --- !u!4 &925374479
 Transform:
   m_ObjectHideFlags: 0
@@ -1120,9 +1124,9 @@ GameObject:
   - component: {fileID: 1200200952}
   - component: {fileID: 1200200954}
   - component: {fileID: 1200200953}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5148,7 +5152,7 @@ GameObject:
   - component: {fileID: 2122306072}
   m_Layer: 5
   m_Name: ===== TRANSITIONS =====
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5263,9 +5267,9 @@ GameObject:
   - component: {fileID: 2517389029328517521}
   - component: {fileID: 2517389029328517535}
   - component: {fileID: 2517389029328517534}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ImageWipe_End
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
