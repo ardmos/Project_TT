@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// 하는 일
+/// 1. 스테이지에서 유저에게 보여지는 UI들의 정보를 업데이트 해준다
+/// 2. 게임 종료시 게임 결과 팝업 띄우기를 호출해준다. 
+/// 3. (미구현) 과일을 더 받을 수 있는 보상형 광고 버튼의 기능 처리를 해준다. 
+/// </summary>
+
+
 public class StageDirector : MonoBehaviour
 {
     #region 변수들
@@ -41,7 +49,6 @@ public class StageDirector : MonoBehaviour
     //현재 던져진 토마토 갯수도 표시해야함.
 
 
-    // Start is called before the first frame update
     void Start()
     {
         initGameObjects();
@@ -56,42 +63,29 @@ public class StageDirector : MonoBehaviour
 
     private void initGameObjects()
     {
-        if (min == null) {
-            try
+        try
+        {
+            if (min == null)
             {
                 min = GameObject.Find("min").GetComponent<Text>();
             }
-            catch (System.Exception)
-            {
-                //Debug.Log("뭔가문제임!!!");
-                throw new System.Exception("뭔가!!! 뭔가 문제임!!!");
-                //throw;
-            }
-        }
-        if (sec == null) {
-            try
+            if (sec == null)
             {
                 sec = GameObject.Find("sec").GetComponent<Text>();
             }
-            catch (System.Exception)
-            {
-                throw new System.Exception("뭔가!!! 뭔가 문제임!!!");
-            }
-        }
-        if (tomCount == null) {
-            try
+            if (tomCount == null)
             {
                 tomCount = GameObject.Find("TomatoCount").GetComponent<Text>();
             }
-            catch (System.Exception)
-            {
-
-                throw new System.Exception("뭔가!!! 뭔가 문제임!!!");
-            }
-        } 
+        }
+        catch (System.Exception)
+        {
+            //Debug.Log("뭔가문제임!!!");
+            throw new System.Exception("뭔가!!! 뭔가 문제임!!! 도움!!");
+            //throw;
+        }        
     }
 
-    // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
@@ -138,7 +132,7 @@ public class StageDirector : MonoBehaviour
     }
 
 
-    #region Get
+    #region Get 모음
     public int GetSucceededTom()
     {
         return succeededtom;
@@ -149,7 +143,7 @@ public class StageDirector : MonoBehaviour
     }
     #endregion
 
-    #region Set
+    #region Set 모음
     #region 성공토마토 보고받는곳
     public void AddSucceededTom()
     {
