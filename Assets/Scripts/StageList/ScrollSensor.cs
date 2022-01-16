@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// StageList Scene에서 화면 스크롤 처리를 담당하는 스크립트. 
+/// StageList Scene에서 사용되는 스크립트. 
 /// 
 /// 하는 일
 /// 1. 터치를 감지해 화면을 스크롤 한다. 
