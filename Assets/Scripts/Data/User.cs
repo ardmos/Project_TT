@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+/// <summary>
+/// 유저의 모든 정보를 관리하는 스크립트. 
+/// 
+/// 게임의 내부 저장소에 유저의 데이터를 저장해뒀다가, 게임이 시작되면 꺼내와서 가지고 있는다. 
+/// </summary>
+
+
 public class User : DontDestroy<User>
 {
     #region Change Fruit
