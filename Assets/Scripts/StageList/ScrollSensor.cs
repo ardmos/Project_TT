@@ -4,6 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// StageList Scene에서 화면 스크롤 처리를 담당하는 스크립트. 
+/// 
+/// 하는 일
+/// 1. 터치를 감지해 화면을 스크롤 한다. 
+/// 2. 유저가 스테이지 버튼을 클릭했을 시 해당 스테이지로 씬 전환을 한다. 
+/// 3. StageList 씬을 떠나기 전에는 현재 메인카메라의 위치를 저장한다. (나중에 StageList씬에 돌아왔을 때 카메라 위치를 설정하는데 쓰임)
+/// </summary>
+
 public class ScrollSensor : MonoBehaviour
 {
     Vector2 startPos, newPos, currentpos, deltapos;
@@ -36,7 +45,6 @@ public class ScrollSensor : MonoBehaviour
             currentpos = touch.position;
 
             //TouchPhase.Began 타이밍에 스테이지 하우스 터치된게 아닐경우, 스크롤로 처리. 
-
             #region 터치스크롤 부분
 
             deltapos = touch.deltaPosition;
