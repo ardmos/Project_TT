@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// 스테이지 종료시 결과 팝업을 띄워주는 스크립트.
+/// 때가 오면 Init 메서드를 StageDirector에서 호출해줌으로써 실행된다.
+/// </summary>
+
 public class ResultPopupController : MonoBehaviour
 {
     //변수들
@@ -33,12 +38,12 @@ public class ResultPopupController : MonoBehaviour
     Animator resultPopupAnimator;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         //resultPopupAnimator = gameObject.GetComponent<Animator>();        
     }
 
+    //StageDirector에서 호출이 된다. 이 메서드가 실행됨으로써 결과팝업이 뜨게됨.
     public void Init(float endtime, int throwedtom, int succeededtom, int stageNumber, bool[] getitems)
     {
         resultPopupAnimator = gameObject.GetComponent<Animator>();
@@ -181,15 +186,15 @@ public class ResultPopupController : MonoBehaviour
     #region 얻은 보상들 저장부분. UserData에 저장.
     private void SavingRewards()
     {
-        GameObject userObj = GameObject.Find("User");
+        //GameObject userObj = GameObject.Find("User");
+        User user_data = User.Instance;
         if (userObj != null)
         {
-            userObj.GetComponent<User>().AddingKatchups((throwedtom - succeededtom));
-            userObj.GetComponent<User>().AddingTomatoes(CalcStarScore("SavingRewards()"));
-            userObj.GetComponent<User>().SaveClearedStageStarScore(new User.StageStarScore(stageNumber, CalcStarScore("SavingRewards()")));
+            user_data.AddingKatchups((throwedtom - succeededtom));
+            user_data.AddingTomatoes(CalcStarScore("SavingRewards()"));
+            user_data.SaveClearedStageStarScore(new User.StageStarScore(stageNumber, CalcStarScore("SavingRewards()")));
         }
-    }
-    
+    }    
     #endregion
 
 
