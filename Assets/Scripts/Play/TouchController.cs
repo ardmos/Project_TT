@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// 스테이지에서 과일 발사 처리를 담당하는 스크립트.
+/// 장전 - 차징 - 발사 의 과정을 거치게된다.
+/// 추가로 UI를 터치했을경우에는 장전이나 발사가 되지 않도록 했다.
+/// </summary>
+
 public class TouchController : MonoBehaviour
 {
     [SerializeField]
@@ -92,7 +98,6 @@ public class TouchController : MonoBehaviour
     }
 
 
-    // Update is called once per frame
     void Update()
     {
         if (afterFire)
@@ -149,7 +154,6 @@ public class TouchController : MonoBehaviour
                 return;
             }           
             #endregion
-
             #region 장전되어있는데 터치 이벤트 _ 차징 후 발사 실행
             if (isReloaded)
             {
