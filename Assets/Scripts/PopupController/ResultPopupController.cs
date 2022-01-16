@@ -188,7 +188,7 @@ public class ResultPopupController : MonoBehaviour
     {
         //GameObject userObj = GameObject.Find("User");
         User user_data = User.Instance;
-        if (userObj != null)
+        if (user_data != null)
         {
             user_data.AddingKatchups((throwedtom - succeededtom));
             user_data.AddingTomatoes(CalcStarScore("SavingRewards()"));
